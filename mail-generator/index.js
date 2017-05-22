@@ -35,4 +35,12 @@ parser.addArgument(
 
 const args = parser.parseArgs();
 
+const symbols = ['.', '-', '_'];
 console.log(args.firstname, args.lastname, args.domain);
+
+const listMailsFirstnameLastname = symbols.map(symbol => `${args.firstname}${symbol}${args.lastname}@${args.domain}`);
+const listMailsLastnameFirstname = symbols.map(symbol => `${args.lastname}${symbol}${args.firstname}@${args.domain}`);
+const listMailsLFirstname = symbols.map(symbol => `${args.lastname.substring(0, 1)}${symbol}${args.firstname}@${args.domain}`);
+const listMails = [...listMailsFirstnameLastname, ...listMailsLastnameFirstname, ...listMailsLFirstname];
+
+console.log(listMails);
