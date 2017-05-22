@@ -5,7 +5,8 @@
 // console.log(firstname, lastname, domain);
 
 const ArgumentParser = require('argparse').ArgumentParser;
-
+const fs = require ('fs');
+const path = require ('path');
 const parser = new ArgumentParser({
     version: '0.0.1',
     addHelp: true,
@@ -49,4 +50,10 @@ listMails.forEach(mail => {
     string += `${args.firstname}, ${args.lastname}, ${args.domain}, ${mail}\n`;
 });
 
-console.log(string);
+const csvFile = path.join(__dirname, 'email.csv');
+
+
+fs.writeFile(csvFile, string, (err) => {
+    if (err) throw err;
+console.log('The file has been saved!');
+});
