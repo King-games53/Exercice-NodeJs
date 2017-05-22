@@ -43,4 +43,10 @@ const listMailsLastnameFirstname = symbols.map(symbol => `${args.lastname}${symb
 const listMailsLFirstname = symbols.map(symbol => `${args.lastname.substring(0, 1)}${symbol}${args.firstname}@${args.domain}`);
 const listMails = [...listMailsFirstnameLastname, ...listMailsLastnameFirstname, ...listMailsLFirstname];
 
-console.log(listMails);
+let string = '';
+
+listMails.forEach(mail => {
+    string += `${args.firstname}, ${args.lastname}, ${args.domain}, ${mail}\n`;
+});
+
+console.log(string);
